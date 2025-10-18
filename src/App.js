@@ -60,7 +60,6 @@ function App() {
           </ProtectedRoute>
         } />
 
-        {/* Seller Routes */}
         <Route path="/seller" element={
           <ProtectedRoute allowedRoles={['seller', 'admin']}>
             <Layout>
@@ -83,7 +82,7 @@ function App() {
           </ProtectedRoute>
         } />
 
-        {/* Default Route */}
+        
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
