@@ -84,7 +84,7 @@ const Login = () => {
       <div className="max-w-md w-full relative z-10">
         {/* Carte avec effet glassmorphism et bordure animée */}
         <div 
-          className="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 animate-fade-in border border-white/20 relative overflow-hidden"
+          className="bg-white/10 backdrop-blur-lg rounded-3xl sm:shadow-2xl p-8 animate-fade-in border border-white/20 relative overflow-hidden"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >

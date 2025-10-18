@@ -289,7 +289,7 @@ const Sidebar = ({ open, setOpen }) => {
       {/* Mobile Menu Button amélioré */}
       <button
         onClick={() => setOpen(true)}
-        className="lg:hidden fixed top-3 font-bold left-4 z-30 p-3 text-primary-900 shadow-2xl hover:shadow-3xl transform hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-sm border border-white/10"
+        className="lg:hidden fixed top-3 font-bold left-4 z-30 p-3 text-primary-900 hover:shadow-3xl transform hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-sm border border-white/10"
       >
         <Menu className="h-5 w-5" />
       </button>
