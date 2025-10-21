@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { ShoppingCart, Eye, EyeOff, User, Lock, Sparkles, Building2 } from 'lucide-react';
+import { ShoppingCart, Eye, EyeOff, User, Lock, Sparkles, Store, ArrowRight, Shield, Zap } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const Login = () => {
@@ -10,26 +10,22 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [particles, setParticles] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
   
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  // Effet de particules animées en arrière-plan
-  useEffect(() => {
-    const generateParticles = () => {
-      const newParticles = Array.from({ length: 15 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 4 + 1,
-        duration: Math.random() * 20 + 10,
-        delay: Math.random() * 5
-      }));
-      setParticles(newParticles);
-    };
+  const features = [
+    { icon: Shield, text: "Ventes Sécurisées", color: "from-green-500 to-emerald-600" },
+    { icon: Zap, text: "Gestion Rapide", color: "from-blue-500 to-cyan-600" },
+    { icon: Sparkles, text: "Analyses Avancées", color: "from-purple-500 to-pink-600" }
+  ];
 
-    generateParticles();
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -46,7 +42,7 @@ const Login = () => {
       const result = await login(email, password);
       
       if (result.success) {
-        toast.success('Connexion réussie ! Bienvenue chez SHAY BUSINESS');
+        toast.success('Connexion réussie ! Bienvenue sur votre espace de vente');
         const userRole = JSON.parse(localStorage.getItem('user'))?.role;
         navigate(userRole === 'admin' ? '/admin' : '/seller');
       } else {
@@ -59,109 +55,157 @@ const Login = () => {
     }
   };
 
+  const FeatureCard = ({ feature, index, isActive }) => (
+    <div className={`absolute inset-0 flex items-center space-x-3 p-6 transition-all duration-500 transform ${
+      isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+    }`}>
+      <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-lg`}>
+        <feature.icon className="h-6 w-6 text-white" />
+      </div>
+      <div>
+        <p className="text-white font-semibold text-lg">{feature.text}</p>
+        <p className="text-white/80 text-sm">Pour vos ventes personnelles</p>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Particules animées en arrière-plan */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Background Animated Elements */}
       <div className="absolute inset-0">
-        {particles.map(particle => (
-          <div
-            key={particle.id}
-            className="absolute rounded-full bg-gradient-to-r from-primary-400/30 to-purple-400/30"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              animation: `float ${particle.duration}s ease-in-out ${particle.delay}s infinite alternate`
-            }}
-          />
-        ))}
+        {/* Animated Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
       </div>
 
-      {/* Effet de brillance */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse" />
-
-      <div className="max-w-md w-full relative z-10">
-        {/* Carte avec effet glassmorphism et bordure animée */}
-        <div 
-          className="bg-white/10 backdrop-blur-lg rounded-3xl sm:shadow-2xl p-8 animate-fade-in border border-white/20 relative overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* Effet de bordure lumineuse */}
-          <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r from-primary-500/20 to-purple-500/20 transition-all duration-1000 ${
-            isHovered ? 'opacity-100' : 'opacity-0'
-          }`} />
-          
-          <div className="relative z-10">
-            {/* En-tête avec logo animé */}
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl mb-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <Building2 className="h-10 w-10 text-white" />
-                <div className="absolute -top-1 -right-1">
-                  <Sparkles className="h-5 w-5 text-yellow-400 animate-pulse" />
-                </div>
+      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
+        {/* Left Section - Brand & Features */}
+        <div className="flex flex-col justify-center space-y-8 text-white">
+          {/* Logo */}
+          <div className="hidden md:flex items-center space-x-4 mb-8">
+            <div className="relative">
+              <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                <Store className="h-7 w-7 text-white" />
               </div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-primary-200 bg-clip-text text-transparent mb-2">
+              <div className="absolute -top-1 -right-1 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center">
+                <Sparkles className="h-3 w-3 text-yellow-800" />
+              </div>
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-primary-200 bg-clip-text text-transparent">
                 SHAY BUSINESS
               </h1>
-              <p className="text-gray-300 text-lg">
-                Plateforme Professionnelle
-              </p>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mt-4 rounded-full" />
+              <p className="text-gray-300 text-lg">Vos ventes, votre manière</p>
+            </div>
+          </div>
+
+          {/* Main Heading */}
+          <div className="hidden md:block space-y-4">
+            <h2 className="text-5xl lg:text-6xl font-bold leading-tight">
+              Vendez
+              <span className="block bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent">
+                Avec Style
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 leading-relaxed">
+              La plateforme de vente personnelle qui s'adapte à votre façon de travailler. 
+              Simple, efficace, et entièrement personnalisable.
+            </p>
+          </div>
+
+          {/* Animated Features */}
+          <div className="relative h-32 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 overflow-hidden hidden md:block">
+            {features.map((feature, index) => (
+              <FeatureCard 
+                key={index}
+                feature={feature}
+                index={index}
+                isActive={index === activeIndex}
+              />
+            ))}
+            {/* Indicator Dots */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {features.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === activeIndex ? 'bg-white w-6' : 'bg-white/30'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Section - Login Form */}
+        <div className="flex items-center justify-center">
+          <div 
+            className="w-full max-w-md bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 transition-all duration-500 hover:bg-white/15 hover:border-white/30"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {/* Form Header */}
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold text-white mb-2">Shay business</h3>
+              <p className="text-gray-300">Connectez-vous à votre espace personnel</p>
+              <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
             </div>
 
-            {/* Formulaire de connexion */}
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Champ Email */}
+              {/* Email Field */}
               <div className="group">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-3">
-                  <div className="flex items-center">
-                    <User className="h-4 w-4 mr-2" />
-                    Adresse email professionnelle
-                  </div>
-                </label>
+                <div className="flex items-center space-x-2 mb-3">
+                  <User className="h-4 w-4 text-primary-400" />
+                  <label htmlFor="email" className="text-sm font-medium text-gray-300">
+                    Votre email
+                  </label>
+                </div>
                 <div className="relative">
                   <input
                     id="email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl indent-7 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 group-hover:bg-white/10"
-                    placeholder="votre@entreprise.com"
+                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 group-hover:bg-white/10 pl-12"
+                    placeholder="votre@email.com"
                     required
                   />
-                  <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                    <User className="h-5 w-5 text-gray-400" />
+                  <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                    <User className="h-5 w-5 text-gray-400 group-hover:text-primary-400 transition-colors" />
                   </div>
                 </div>
               </div>
 
-              {/* Champ Mot de passe */}
+              {/* Password Field */}
               <div className="group">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-3">
-                  <div className="flex items-center">
-                    <Lock className="h-4 w-4 mr-2" />
-                    Mot de passe sécurisé
-                  </div>
-                </label>
+                <div className="flex items-center space-x-2 mb-3">
+                  <Lock className="h-4 w-4 text-primary-400" />
+                  <label htmlFor="password" className="text-sm font-medium text-gray-300">
+                    Votre mot de passe
+                  </label>
+                </div>
                 <div className="relative">
                   <input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 group-hover:bg-white/10 pr-12 pl-12"
+                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 group-hover:bg-white/10 pl-12 pr-12"
                     placeholder="••••••••"
                     required
                   />
-                  <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-gray-400" />
+                  <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                    <Lock className="h-5 w-5 text-gray-400 group-hover:text-primary-400 transition-colors" />
                   </div>
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors duration-200 p-1"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors duration-200 p-1"
                   >
                     {showPassword ? 
                       <EyeOff className="h-5 w-5" /> : 
@@ -171,7 +215,7 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Bouton de connexion */}
+              {/* Login Button */}
               <button
                 type="submit"
                 disabled={loading}
@@ -181,58 +225,44 @@ const Login = () => {
                   {loading ? (
                     <>
                       <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-3" />
-                      Authentification...
+                      Connexion en cours...
                     </>
                   ) : (
                     <>
                       <ShoppingCart className="h-5 w-5 mr-3 transition-transform group-hover:scale-110" />
-                      Accéder à l'espace pro
+                      Accéder à mes ventes
+                      <ArrowRight className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" />
                     </>
                   )}
                 </div>
                 
-                {/* Effet de brillance au survol */}
+                {/* Shine Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
               </button>
             </form>
 
-            {/* Footer */}
+            {/* Security Badge */}
             <div className="mt-8 pt-6 border-t border-white/10">
-              <p className="text-center text-gray-400 text-sm">
-                © 2025 SHAY BUSINESS • 
-                <span className="text-primary-400 ml-1">Sécurité Entreprise</span>
-              </p>
+              <div className="flex items-center justify-center space-x-3 text-sm text-gray-300">
+                <Shield className="h-4 w-4 text-green-400" />
+                <span>Vos données sont protégées • Chiffrement activé</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Styles d'animation CSS */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) translateX(0);
-          }
-          50% {
-            transform: translateY(-20px) translateX(10px);
-          }
-        }
-        
-        .animate-fade-in {
-          animation: fadeIn 0.8s ease-out;
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      {/* Floating Elements */}
+      <div className="absolute bottom-8 left-8 flex items-center space-x-4 text-white/60 text-sm">
+        <div className="hidden md:flex items-center space-x-2">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+          <span className=''>Plateforme active</span>
+        </div>
+      </div>
+
+      <div className="absolute bottom-8 md:right-8 text-white/60 text-sm">
+        © 2025 SHAY VENTES • Vente Personnelle
+      </div>
     </div>
   );
 };

@@ -26,7 +26,8 @@ const SaleDetailsModal = ({ isOpen, onClose, saleId, onUpdate }) => {
         customer_name: saleData.customer_name,
         customer_email: saleData.customer_email,
         customer_phone: saleData.customer_phone,
-        payment_method: saleData.payment_method
+        payment_method: saleData.payment_method,
+
       });
     } catch (error) {
       toast.error('Erreur lors du chargement des détails');
