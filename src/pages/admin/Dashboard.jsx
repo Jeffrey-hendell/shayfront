@@ -206,9 +206,6 @@ const AdminDashboard = () => {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
           <div className="space-y-2">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-gradient-to-r from-primary-500 to-blue-500 rounded-xl shadow-lg">
-                <Sparkles className="h-6 w-6 text-white" />
-              </div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
                 Tableau de bord
               </h1>
