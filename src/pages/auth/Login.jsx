@@ -42,7 +42,7 @@ const Login = () => {
       const result = await login(email, password);
       
       if (result.success) {
-        toast.success('Connexion réussie ! Bienvenue sur votre espace de vente');
+        toast.success('Connexion réussie ! Bienvenue sur Shay Business');
         const userRole = JSON.parse(localStorage.getItem('user'))?.role;
         navigate(userRole === 'admin' ? '/admin' : '/seller');
       } else {
@@ -71,23 +71,25 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 flex items-center justify-center p-4 relative overflow-hidden">
+      
       <div className="absolute inset-0">
         {/* Animated Orbs */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
         
+        {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
       </div>
 
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
-        
+        {/* Left Section*/}
         <div className="flex flex-col justify-center space-y-8 text-white">
           {/* Logo */}
           <div className="hidden md:flex items-center space-x-4 mb-8">
             <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                <Store className="h-7 w-7 text-white" />
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
+                <img src="https://i.ibb.co/Lhbx4PKX/S-11-6-2025-1.png" alt="Shay" className='h-12 w-12'/>
               </div>
               <div className="absolute -top-1 -right-1 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center">
                 <Sparkles className="h-3 w-3 text-yellow-800" />
@@ -101,7 +103,7 @@ const Login = () => {
             </div>
           </div>
 
-         
+          {/* Main Heading */}
           <div className="hidden md:block space-y-4">
             <h2 className="text-5xl lg:text-6xl font-bold leading-tight">
               Vendez
@@ -110,8 +112,7 @@ const Login = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-300 leading-relaxed">
-              La plateforme de vente personnelle qui s'adapte à votre façon de travailler. 
-              Simple, efficace, et entièrement personnalisable.
+              Connectez-vous, gérez, et développez vos ventes en toute simplicité.
             </p>
           </div>
 
@@ -140,7 +141,7 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Right Section - Login Form */}
+        {/* Right Section*/}
         <div className="flex items-center justify-center">
           <div 
             className="w-full max-w-md bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 transition-all duration-500 hover:bg-white/15 hover:border-white/30"
@@ -149,13 +150,17 @@ const Login = () => {
           >
             {/* Form Header */}
             <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold text-white mb-2">Shay business</h3>
+              <div className='flex items-center justify-center'>
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center animate-pulse-slow">
+                <img src="https://i.ibb.co/Lhbx4PKX/S-11-6-2025-1.png" alt="Shay" className='h-12 w-12'/>
+              </div>
+              </div>
               <p className="text-gray-300">Connectez-vous à votre espace personnel</p>
               <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Email Field */}
+             
               <div className="group">
                 <div className="flex items-center space-x-2 mb-3">
                   <User className="h-4 w-4 text-primary-400" />
@@ -179,7 +184,7 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Password Field */}
+              
               <div className="group">
                 <div className="flex items-center space-x-2 mb-3">
                   <Lock className="h-4 w-4 text-primary-400" />
@@ -213,7 +218,7 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Login Button */}
+             
               <button
                 type="submit"
                 disabled={loading}
@@ -228,18 +233,17 @@ const Login = () => {
                   ) : (
                     <>
                       <ShoppingCart className="h-5 w-5 mr-3 transition-transform group-hover:scale-110" />
-                      Accéder à mes ventes
+                      Accéder à Shay
                       <ArrowRight className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" />
                     </>
                   )}
                 </div>
-                
-                {/* Shine Effect */}
+
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
               </button>
             </form>
 
-            {/* Security Badge */}
+            
             <div className="mt-8 pt-6 border-t border-white/10">
               <div className="flex items-center justify-center space-x-3 text-sm text-gray-300">
                 <Shield className="h-4 w-4 text-green-400" />
@@ -250,7 +254,7 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Floating Elements */}
+      
       <div className="absolute bottom-8 left-8 flex items-center space-x-4 text-white/60 text-sm">
         <div className="hidden md:flex items-center space-x-2">
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
