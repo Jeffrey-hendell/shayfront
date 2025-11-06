@@ -66,7 +66,7 @@ const Sales = () => {
       link.remove();
       toast.success('📄 Facture téléchargée avec succès');
     } catch (error) {
-      toast.error('❌ Erreur lors du téléchargement');
+      toast.error('Erreur lors du téléchargement');
     }
   };
 
@@ -182,9 +182,9 @@ const Sales = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 flex items-center justify-center">
-        <div className="text-center">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center flex items-center justify-center flex-col">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center animate-pulse-slow">
                 <img src="https://i.ibb.co/Lhbx4PKX/S-11-6-2025-1.png" alt="Shay" className='h-12 w-12'/>
               </div>
           <p className="text-gray-600 animate-pulse">Chargement des ventes...</p>
