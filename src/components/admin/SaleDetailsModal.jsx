@@ -226,7 +226,7 @@ const SaleDetailsModal = ({ isOpen, onClose, saleId, onUpdate }) => {
                       </p>
                       <p><strong>Date:</strong> {new Date(sale.created_at).toLocaleString('fr-FR')}</p>
                       <p className="text-xl font-bold text-primary-600">
-                        Total: {parseFloat(sale.total_amount).toFixed(2)} GDS
+                        Total: {parseFloat(sale.total_amount).toFixed(2)} HTG
                       </p>
                     </div>
                   </div>
@@ -253,10 +253,10 @@ const SaleDetailsModal = ({ isOpen, onClose, saleId, onUpdate }) => {
                         </div>
                         <div className="text-right">
                           <p className="font-semibold text-primary-600">
-                            {parseFloat(item.subtotal || item.unit_price * item.quantity).toFixed(2)} GDS
+                            {parseFloat(item.subtotal || item.unit_price * item.quantity).toFixed(2)} HTG
                           </p>
                           <p className="text-sm text-gray-500">
-                            {item.quantity} × {parseFloat(item.unit_price).toFixed(2)} GDS
+                            {item.quantity} × {parseFloat(item.unit_price).toFixed(2)} HTG
                           </p>
                         </div>
                       </div>
