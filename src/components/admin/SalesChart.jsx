@@ -26,7 +26,7 @@ const SalesChart = ({ data }) => {
           />
           <YAxis className="text-sm" />
           <Tooltip 
-            formatter={(value) => [`${value} GDS`, 'Chiffre d\'affaires']}
+            formatter={(value) => [`${value} HTG`, 'Chiffre d\'affaires']}
             labelFormatter={(label) => `Date: ${formatDate(label)}`}
           />
           <Line 
