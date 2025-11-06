@@ -147,8 +147,8 @@ const Sidebar = ({ open, setOpen }) => {
         <div className="flex items-center justify-between h-20 px-6 border-b border-slate-700/50 bg-slate-800/30 backdrop-blur-xl">
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-r from-primary-500 via-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
-                <ShoppingCart className="h-6 w-6 text-white" />
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
+                <img src="https://i.ibb.co/Lhbx4PKX/S-11-6-2025-1.png" alt="Shay" className='h-12 w-12'/>
               </div>
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-900 animate-pulse"></div>
             </div>
