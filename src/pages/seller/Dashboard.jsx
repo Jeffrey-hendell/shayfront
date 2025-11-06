@@ -151,9 +151,6 @@ const SellerDashboard = () => {
       <div className="bg-gradient-to-r from-slate-900 to-slate-700 rounded-2xl p-6 text-white">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center space-x-4">
-            <div className="p-3 bg-white/10 rounded-2xl backdrop-blur-sm">
-              <Sparkles className="h-8 w-8 text-yellow-400" />
-            </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-bold">Tableau de Bord</h1>
               <p className="text-slate-300 mt-1 text-[10px] sm:text-base">
