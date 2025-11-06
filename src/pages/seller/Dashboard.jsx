@@ -136,10 +136,12 @@ const SellerDashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-96">
-        <div className="text-center">
-          <LoadingSpinner size="lg" />
-          <p className="text-gray-600 mt-4">Chargement de votre tableau de bord...</p>
+     <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center flex items-center justify-center flex-col">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center animate-pulse-slow">
+                <img src="https://i.ibb.co/Lhbx4PKX/S-11-6-2025-1.png" alt="Shay" className='h-12 w-12'/>
+              </div>
+          <p className="text-gray-600 animate-pulse">Chargement des données...</p>
         </div>
       </div>
     );
