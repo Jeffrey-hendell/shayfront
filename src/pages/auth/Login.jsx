@@ -245,7 +245,7 @@ const Login = () => {
             <div className="mt-8 pt-6 border-t border-white/10">
               <div className="flex items-center justify-center space-x-3 text-sm text-gray-300">
                 <Shield className="h-4 w-4 text-green-400" />
-                <span>La sécurité de nos données dépend de chacun de nous. Veuillez veiller à ne jamais partager vos informations de connexion</span>
+                <span>Gardez vos informations de connexion privées</span>
               </div>
             </div>
           </div>
