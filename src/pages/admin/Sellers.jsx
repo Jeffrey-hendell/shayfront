@@ -50,7 +50,7 @@ const Sellers = () => {
       const data = await adminService.getSellers();
       setSellers(data);
     } catch (error) {
-      toast.error('❌ Erreur lors du chargement des vendeurs');
+      toast.error('Erreur lors du chargement des vendeurs');
     } finally {
       setLoading(false);
     }
@@ -59,10 +59,10 @@ const Sellers = () => {
   const handleToggleStatus = async (sellerId, currentStatus) => {
     try {
       await adminService.toggleSellerStatus(sellerId, !currentStatus);
-      toast.success(`🎉 Vendeur ${!currentStatus ? 'activé' : 'désactivé'} avec succès`);
+      toast.success(`Vendeur ${!currentStatus ? 'activé' : 'désactivé'} avec succès`);
       loadSellers();
     } catch (error) {
-      toast.error('❌ Erreur lors de la mise à jour');
+      toast.error('Erreur lors de la mise à jour');
     }
   };
 
@@ -113,9 +113,9 @@ const Sellers = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-pulse">
-            <Users className="h-8 w-8 text-white" />
-          </div>
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
+                <img src="https://i.ibb.co/Lhbx4PKX/S-11-6-2025-1.png" alt="Shay" className='h-12 w-12'/>
+              </div>
           <p className="text-gray-600 animate-pulse">Chargement des vendeurs...</p>
         </div>
       </div>
