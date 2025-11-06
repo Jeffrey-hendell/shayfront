@@ -71,19 +71,17 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Background Animated Elements */}
       <div className="absolute inset-0">
         {/* Animated Orbs */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
         
-        {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
       </div>
 
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
-        {/* Left Section - Brand & Features */}
+        
         <div className="flex flex-col justify-center space-y-8 text-white">
           {/* Logo */}
           <div className="hidden md:flex items-center space-x-4 mb-8">
@@ -103,7 +101,7 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Main Heading */}
+         
           <div className="hidden md:block space-y-4">
             <h2 className="text-5xl lg:text-6xl font-bold leading-tight">
               Vendez
