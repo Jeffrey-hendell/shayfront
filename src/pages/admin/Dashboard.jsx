@@ -200,7 +200,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 p-1 lg:p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 p-2 lg:p-6">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header avec Navigation */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
