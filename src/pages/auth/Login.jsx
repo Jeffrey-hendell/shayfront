@@ -83,18 +83,18 @@ const Login = () => {
       </div>
 
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
-        {/* Left Section*/}
+        {/* Left Section - Brand & Features */}
         <div className="flex flex-col justify-center space-y-8 text-white">
           {/* Logo */}
           <div className="hidden md:flex items-center space-x-4 mb-8">
-            {/* <div className="relative">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
+            <div className="relative">
+              {/* <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
                 <img src="https://i.ibb.co/Lhbx4PKX/S-11-6-2025-1.png" alt="Shay" className='h-12 w-12'/>
               </div>
               <div className="absolute -top-1 -right-1 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center">
                 <Sparkles className="h-3 w-3 text-yellow-800" />
-              </div>
-            </div> */}
+              </div> */}
+            </div>
             <div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-primary-200 bg-clip-text text-transparent">
                 SHAY BUSINESS
@@ -141,7 +141,7 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Right Section*/}
+        {/* Right Section - Login Form */}
         <div className="flex items-center justify-center">
           <div 
             className="w-full max-w-md bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 transition-all duration-500 hover:bg-white/15 hover:border-white/30"
@@ -160,7 +160,7 @@ const Login = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-             
+              {/* Email Field */}
               <div className="group">
                 <div className="flex items-center space-x-2 mb-3">
                   <User className="h-4 w-4 text-primary-400" />
@@ -184,7 +184,7 @@ const Login = () => {
                 </div>
               </div>
 
-              
+              {/* Password Field */}
               <div className="group">
                 <div className="flex items-center space-x-2 mb-3">
                   <Lock className="h-4 w-4 text-primary-400" />
@@ -218,7 +218,7 @@ const Login = () => {
                 </div>
               </div>
 
-             
+              {/* Login Button */}
               <button
                 type="submit"
                 disabled={loading}
@@ -243,7 +243,7 @@ const Login = () => {
               </button>
             </form>
 
-            
+            {/* Security Badge */}
             <div className="mt-8 pt-6 border-t border-white/10">
               <div className="flex items-center justify-center space-x-3 text-sm text-gray-300">
                 <Shield className="h-4 w-4 text-green-400" />
