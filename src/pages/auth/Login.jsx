@@ -87,14 +87,14 @@ const Login = () => {
         <div className="flex flex-col justify-center space-y-8 text-white">
           {/* Logo */}
           <div className="hidden md:flex items-center space-x-4 mb-8">
-            <div className="relative">
+            {/* <div className="relative">
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg animate-pulse-slow">
                 <img src="https://i.ibb.co/Lhbx4PKX/S-11-6-2025-1.png" alt="Shay" className='h-12 w-12'/>
               </div>
               <div className="absolute -top-1 -right-1 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center">
                 <Sparkles className="h-3 w-3 text-yellow-800" />
               </div>
-            </div>
+            </div> */}
             <div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-primary-200 bg-clip-text text-transparent">
                 SHAY BUSINESS
